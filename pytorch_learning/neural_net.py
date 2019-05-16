@@ -29,7 +29,6 @@ net = Net(1, 10, 1)
 print(net)   #把网络的层结构全部告诉你
 
 plt.ion()   #让plt实时打印
-plt.show()
 
 optimizer = torch.optim.SGD(net.parameters(), lr=0.5)  #把网络的参数属性放入更新
 loss_func = torch.nn.MSELoss()  #均方误差计算损失函数
@@ -42,14 +41,15 @@ for t in range(100):
     optimizer.zero_grad()   #把所有参数的梯度设为0
     loss.backward()   #反向传播
     optimizer.step()   #对参数进行优化
-    if t%5 == 0:
-        plt.cla()   #Clear axis即清除当前图形中的当前活动轴。其他轴不受影响。
-        plt.scatter(x.data.numpy(), y.data.numpy())
-        plt.plot(x.data.numpy(), prediction.data.numpy(), 'r-', lw=5)
-        plt.text(0.5, 0, 'Loss=%.4f' % loss.data[0], fontdict={'size':20, 'color': 'red'})
+    if t % 5 == 0:
+        # plot and show learning process
+        plt.cla()   #?
+        plt.scatter(x.data.numpy(), y.data.numpy())   #
+        plt.plot(x.data.numpy(), prediction.data.numpy(), 'r-', lw=5)   #红色 线宽5
+        plt.text(0.5, 0, 'Loss=%.4f' % loss.data.numpy(), fontdict={'size': 20, 'color': 'red'})   #坐标 文字
         plt.pause(0.1)
 
-plt.ion()   #让plt实时打印
+plt.ioff()   #
 plt.show()
 
 
