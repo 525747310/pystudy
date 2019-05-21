@@ -19,12 +19,13 @@ b = np.zeros((3,4))
 print(b)
 
 c = np.ones((2,3),dtype=np.int16)
+print(c.dtype)
 print(c)
 
 d = np.empty((2,3))   #生成一个十分接近与0的矩阵
 print(d)
 
-e = np.arange(10,20,2)
+e = np.arange(10,20,2)   #类似python的range
 print(e)
 
 f = np.arange(12).reshape((3,4))  #从0到11
